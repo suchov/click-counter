@@ -20,6 +20,14 @@ class App extends Component {
           onClick={() => this.setState({counter: this.state.counter + 1})}
           >
           Increment counter</button>
+
+        <button
+          data-test="decrement-button"
+          onClick={() => {
+            return this.setState({counter: this.state.counter - 1})
+          }}
+          >
+          Decrement counter</button>
       </div>
     );
   }
