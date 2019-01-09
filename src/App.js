@@ -29,7 +29,7 @@ class App extends Component {
         <button
           data-test="increment-button"
           onClick={() => {
-            this.setState({counter: this.state.counter + 1})
+            this.setState({counter: this.state.counter + 1, showError: false})
           }}
           >
           Increment counter</button>

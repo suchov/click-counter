@@ -107,5 +107,19 @@ test('we start to show the error message when we are trying to decrement bellow 
 });
 
 test('we hide the error message when we increment above 0 after showing it', () => {
-
+  const counter = -1;
+  const wrapper = setup(null, {counter});
+  //find a button and click
+  const button = findByTestAttr(wrapper, 'decrement-button');
+  button.simulate('click');
+  wrapper.update();
+  //find error message
+  const errorMessage = findByTestAttr(wrapper, 'error-message');
+  expect(errorMessage.text()).toContain('below 0');
+  //wnen increment the error message should dissapear
+  const button_incr = findByTestAttr(wrapper, 'increment-button');
+  button_incr.simulate('click');
+  wrapper.update();
+  const errorMessage2 = findByTestAttr(wrapper, 'error-message');
+  expect(errorMessage2).toHaveLength(0);
 });
