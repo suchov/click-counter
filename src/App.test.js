@@ -46,11 +46,19 @@ test('renders counter display', () => {
   expect(counterDisplay.length).toBe(1);
 });
 
+// the counter starts at 0 by default
 test('counter starts at 0', () => {
   const wrapper = setup();
   const initialCounterState = wrapper.state('counter');
   expect(initialCounterState).toBe(0);
 });
+
+// the showError state is false by default
+test('error starts with not showing our', () =>{
+  const wrapper = setup();
+  const initialCounterState = wrapper.state('showError');
+  expect(initialCounterState).toBe(false);
+})
 
 test('clicking button increments counter display', () =>  {
   const counter = 7;
@@ -87,7 +95,7 @@ test('clicking decrement counter button decrements counter display', () => {
 });
 
 test('we start to show the error message when we are trying to decrement bellow 0', () => {
-  const counter = 5;
+  const counter = 0;
   const wrapper = setup(null, {counter});
   //find a button and click
   const button = findByTestAttr(wrapper, 'decrement-button');
@@ -96,7 +104,6 @@ test('we start to show the error message when we are trying to decrement bellow 
   //find error message
   const errorMessage = findByTestAttr(wrapper, 'error-message');
   expect(errorMessage.text()).toContain('below 0');
-
 });
 
 test('we hide the error message when we increment above 0 after showing it', () => {
