@@ -85,3 +85,20 @@ test('clicking decrement counter button decrements counter display', () => {
   const counterDisplay = findByTestAttr(wrapper, 'counter-display');
   expect(counterDisplay.text()).toContain(counter - 1);
 });
+
+test('we start to show the error message when we are trying to decrement bellow 0', () => {
+  const counter = 5;
+  const wrapper = setup(null, {counter});
+  //find a button and click
+  const button = findByTestAttr(wrapper, 'decrement-button');
+  button.simulate('click');
+  wrapper.update();
+  //find error message
+  const errorMessage = findByTestAttr(wrapper, 'error-message');
+  expect(errorMessage.text()).toContain('below 0');
+
+});
+
+test('we hide the error message when we increment above 0 after showing it', () => {
+
+});

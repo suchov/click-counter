@@ -8,6 +8,7 @@ class App extends Component {
 
     this.state = {
       counter: 0,
+      showError: false,
     }
   }
 
@@ -15,6 +16,8 @@ class App extends Component {
     return (
       <div data-test="component-app">
         <h1 data-test="counter-display">The counter is currently {this.state.counter}</h1>
+        <h2 data-test = "error-message"> You can't decrement below 0</h2>
+        
         <button
           data-test="increment-button"
           onClick={() => this.setState({counter: this.state.counter + 1})}
