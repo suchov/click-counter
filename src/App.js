@@ -26,6 +26,7 @@ class App extends Component {
           )}
         </div>
         
+        {/* increment button */}
         <button
           data-test="increment-button"
           onClick={() => {
@@ -34,6 +35,7 @@ class App extends Component {
           >
           Increment counter</button>
 
+        {/* decrement button */}
         <button
           data-test="decrement-button"
           onClick={() => {
